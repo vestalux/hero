@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HERO Díj - Helyi érték, Remek Ötlet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: #1e3a8a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo h1 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .logo .subtitle {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: linear-gradient(45deg, #1e3a8a, #00d4aa);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(0, 212, 170, 0.8));
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,100 1000,0 1000,100"/></svg>') no-repeat;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00d4aa, #1e3a8a);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #1e3a8a, #00d4aa);
+            border-radius: 2px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #1e3a8a;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(30, 58, 138, 0.05), rgba(0, 212, 170, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        .category-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-number {
+            display: inline-block;
+            background: linear-gradient(45deg, #1e3a8a, #00d4aa);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1e3a8a, #00d4aa);
+            color: white;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: scale(1.05);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-item h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .info-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 80px 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #1e3a8a;
+            padding-bottom: 10px;
+        }
+
+        .deadline {
+            background: linear-gradient(45deg, #1e3a8a, #00d4aa);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .contact-section {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #1a252f;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- H betű bal oldala -->
+                            <rect x="20" y="20" width="15" height="60" fill="#00d4aa" rx="2"/>
+                            <!-- H betű jobb oldala -->
+                            <rect x="65" y="20" width="15" height="60" fill="#00d4aa" rx="2"/>
+                            <!-- H betű középső része -->
+                            <rect x="20" y="47" width="60" height="8" fill="#00d4aa" rx="1"/>
+                            <!-- Kézfej 1 (felső) -->
+                            <circle cx="42" cy="30" r="6" fill="#1e3a8a"/>
+                            <ellipse cx="42" cy="25" rx="4" ry="2" fill="#1e3a8a"/>
+                            <!-- Ujjak 1 -->
+                            <rect x="38" y="22" width="1.5" height="4" fill="#1e3a8a" rx="0.5"/>
+                            <rect x="40" y="20" width="1.5" height="6" fill="#1e3a8a" rx="0.5"/>
+                            <rect x="42" y="20" width="1.5" height="6" fill="#1e3a8a" rx="0.5"/>
+                            <rect x="44" y="21" width="1.5" height="5" fill="#1e3a8a" rx="0.5"/>
+                            <rect x="46" y="23" width="1.5" height="3" fill="#1e3a8a" rx="0.5"/>
+                            
+                            <!-- Kézfej 2 (alsó) -->
+                            <circle cx="58" cy="65" r="6" fill="#1e3a8a"/>
+                            <ellipse cx="58" cy="70" rx="4" ry="2" fill="#1e3a8a"/>
+                            <!-- Ujjak 2 -->
+                            <rect x="54" y="72" width="1.5" height="4" fill="#1e3a8a" rx="0.5"/>
+                            <rect x="56" y="72" width="1.5" height="6" fill="#1e3a8a" rx="0.5"/>
+                            <rect x="58" y="72" width="1.5" height="6" fill="#1e3a8a" rx="0.5"/>
+                            <rect x="60" y="72" width="1.5" height="5" fill="#1e3a8a" rx="0.5"/>
+                            <rect x="62" y="73" width="1.5" height="3" fill="#1e3a8a" rx="0.5"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1>HERO DÍJ</h1>
+                        <div class="subtitle">Helyi érték, Remek Ötlet</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#kategoriak">Kategóriák</a></li>
+                        <li><a href="#elonyok">Előnyök</a></li>
+                        <li><a href="#jelentkezes">Jelentkezés</a></li>
+                        <li><a href="#kapcsolat">Kapcsolat</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>HERO DÍJ 2025</h1>
+                <div class="hero-subtitle">Helyi érték, Remek Ötlet</div>
+                <p>A Társadalmi Vállalkozások Országos Szövetsége (TAVOSZ) meghirdeti a HERO Díjat, melynek célja, hogy bemutassa a nagyközönség számára azokat a példaértékű társadalmi vállalkozásokat és közösségi projekteket, amelyek egyszerre szolgálnak jó ügyeket, valamint hoznak létre minőségi termékeket és szolgáltatásokat.</p>
+                <a href="https://forms.gle/your_form_link_here" class="cta-button" target="_blank">Jelentkezem most!</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kategoriak" class="section">
+        <div class="container">
+            <h2 class="section-title">Pályázati Kategóriák</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <h3><span class="category-number">1</span>Az év termékgyártó társadalmi vállalkozása</h3>
+                </div>
+                <div class="category-card">
+                    <h3><span class="category-number">2</span>Az év szolgáltató társadalmi vállalkozása</h3>
+                </div>
+                <div class="category-card">
+                    <h3><span class="category-number">3</span>Az év kereskedő társadalmi vállalkozása</h3>
+                </div>
+                <div class="category-card">
+                    <h3><span class="category-number">4</span>Dizájn termék díj</h3>
+                </div>
+                <div class="category-card">
+                    <h3><span class="category-number">5</span>Legsikeresebb kollaboráció</h3>
+                </div>
+                <div class="category-card">
+                    <h3><span class="category-number">6</span>Legígéretesebb induló társadalmi vállalkozás</h3>
+                </div>
+                <div class="category-card">
+                    <h3><span class="category-number">7</span>Kiemelkedő közösségfejlesztő</h3>
+                </div>
+                <div class="category-card">
+                    <h3><span class="category-number">8</span>Példaértékű támogató projekt</h3>
+                </div>
+                <div class="category-card">
+                    <h3><span class="category-number">9</span>TAVOSZ hőse</h3>
+                </div>
+                <div class="category-card">
+                    <h3><span class="category-number">10</span>Közönségdíj</h3>
+                    <p>A közönség szavazatai alapján</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="elonyok" class="section">
+        <div class="container">
+            <h2 class="section-title">A Részvétel Előnyei</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">🏆</span>
+                    <h4>Elismerés</h4>
+                    <p>A díj elismeri és támogatja az üzleti és szociális értékeket, növeli a szervezet ismertségét és hitelességét.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💪</span>
+                    <h4>Bizalmi tőke</h4>
+                    <p>Erősíti a bizalmi tőkét, a díjazottak üzleti sikereit és társadalmi hatását.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🏷️</span>
+                    <h4>HERO védjegy</h4>
+                    <p>Lehetőség a HERO díj védjegy használatára.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🤝</span>
+                    <h4>Kapcsolatépítés</h4>
+                    <p>Kapcsolatépítés más társadalmi vállalkozásokkal, támogatókkal és potenciális vevőkkel.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">📺</span>
+                    <h4>Médiamegjelenés</h4>
+                    <p>A nyerteseknek médiamegjelenést biztosít.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎁</span>
+                    <h4>Értékes díjak</h4>
+                    <p>Értékes díjak és szponzorációk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">Pályázói Feltételek</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>1-7. kategóriák</h3>
+                    <p>Pályázhat minden Magyarországon bejegyzett társadalmi vállalkozás, amely alapszabályában szerepel társadalmi, közösségi tevékenység, és rendelkezik vállalkozási tevékenységből származó árbevétellel.</p>
+                </div>
+                <div class="info-card">
+                    <h3>8. kategória</h3>
+                    <p>Azok az üzleti vállalkozások, befektetők pályázhatnak, akik segítik a társadalmi vállalkozásokat üzleti céljaik elérésében.</p>
+                </div>
+                <div class="info-card">
+                    <h3>9. kategória</h3>
+                    <p>Társadalmi vállalkozások által javasolt személy pályázhat, aki a helyi közösségben végez kiemelkedő munkát, a társadalmi vállalkozás működése, missziójának fenntartása érdekében.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="jelentkezes" class="section">
+        <div class="container">
+            <h2 class="section-title">Jelentkezési Információk</h2>
+            
+            <div class="deadline">
+                📅 Jelentkezési határidő: 2025. november 17.
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Jelentkezés menete</h3>
+                    <p><strong>1. lépés:</strong> A honlapon válassza ki, hogy melyik kategóriában szeretne pályázni.</p>
+                    <p><strong>2. lépés:</strong> A kiválasztott kategória mellett lévő JELENTKEZEM gombra kattintva tudja kitölteni az online automatikus űrlapot.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Értékelés</h3>
+                    <p>A beérkezett pályázati anyagokat többlépcsőben kerülnek kiértékelésre. Bíráló bizottság tagjai az üzleti szférához kapcsolódó független szervezetek képviselői.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Szervezők</h3>
+                    <p><strong>Főszervező:</strong> Társadalmi Vállalkozások Országos Szövetsége (TAVOSZ)</p>
+                    <p><strong>Kapcsolattartó:</strong> Bánhegyiné Tanai Tünde</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://forms.gle/your_form_link_here" class="cta-button" target="_blank">Jelentkezési űrlap kitöltése</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kapcsolat" class="contact-section">
+        <div class="container">
+            <h2>Kapcsolat</h2>
+            <p>További információkért forduljon hozzánk bizalommal!</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>info@tavosz.hu</span>
+                </div>
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>06 70 576 8705</span>
+                </div>
+            </div>
+            <p style="margin-top: 30px; font-size: 1.2rem; font-weight: bold;">
+                Sok sikert kívánunk a nevezéshez! 🍀
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TAVOSZ - Társadalmi Vállalkozások Országos Szövetsége. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.category-card, .benefit-item, .info-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
