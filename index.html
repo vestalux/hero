@@ -1,661 +1,559 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HERO Díj - Helyi érték, Remek Ötlet</title>
+    <title>HERO Díj 2025 - Több vagy mint egy vállalkozó. Hős vagy.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lexend:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             line-height: 1.6;
-            overflow-x: hidden;
         }
-
-        .hero-section {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lexend', sans-serif;
         }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(34,211,238,0.1)" points="0,1000 1000,800 1000,1000"/></svg>');
-            animation: float 6s ease-in-out infinite;
+        
+        /* Modern színpaletta */
+        .bg-primary { background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%); }
+        .bg-accent { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        .text-accent { color: #f59e0b; }
+        .border-accent { border-color: #f59e0b; }
+        .hover\:bg-accent-dark:hover { 
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%); 
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        
+        /* Moderne shadows */
+        .shadow-modern { 
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1), 0 8px 25px -8px rgba(0, 0, 0, 0.1); 
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
+        .shadow-accent { 
+            box-shadow: 0 20px 40px -12px rgba(245, 158, 11, 0.25), 0 8px 25px -8px rgba(245, 158, 11, 0.15); 
         }
-
-        .hero-content {
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        .hero-logo {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 30px;
-            display: block;
-            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
-            animation: slideInUp 1s ease;
-        }
-
-        .hero-title {
-            font-size: 4rem;
+        
+        /* Modern button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 16px;
+            padding: 18px 36px;
             font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: slideInUp 1s ease 0.2s both;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4);
         }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            animation: slideInUp 1s ease 0.4s both;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -5px rgba(245, 158, 11, 0.6);
         }
-
-        .hero-description {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            opacity: 0.8;
-            animation: slideInUp 1s ease 0.6s both;
+        
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        /* Modern grid hover effects */
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .cta-button {
-            display: inline-block;
-            background: #22d3ee;
-            color: #1e3a8a;
-            padding: 18px 40px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.4);
-            animation: slideInUp 1s ease 0.8s both;
+        .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
         }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(34, 211, 238, 0.6);
-            background: #06b6d4;
-            color: white;
+        
+        /* Hero background */
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2574&auto=format&fit=crop') center/cover;
         }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: #1e3a8a;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, #1e3a8a, #22d3ee);
-            margin: 20px auto;
-            border-radius: 2px;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .about-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(34, 211, 238, 0.2);
-        }
-
-        .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2);
-            border-color: #22d3ee;
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #1e3a8a, #22d3ee);
+        
+        /* Animated gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #1e3a8a;
-            font-weight: 600;
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .category-card {
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border-left: 5px solid transparent;
-            color: #1e3a8a;
-        }
-
-        .category-card:hover {
-            transform: scale(1.02);
-            border-left-color: #1e3a8a;
-            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.2);
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: white;
-        }
-
-        .category-number {
-            display: inline-block;
-            background: linear-gradient(135deg, #1e3a8a, #22d3ee);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            line-height: 40px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .category-card:hover .category-number {
-            background: #22d3ee;
-            color: #1e3a8a;
-        }
-
-        .timeline {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-
-        .timeline-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .deadline-box {
-            background: linear-gradient(135deg, #22d3ee, #06b6d4);
-            color: #1e3a8a;
-            padding: 40px;
-            border-radius: 20px;
-            margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3);
-        }
-
-        .deadline-date {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .step-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(34, 211, 238, 0.2);
-        }
-
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.2);
-            border-color: #22d3ee;
-        }
-
-        .step-number {
-            background: linear-gradient(135deg, #1e3a8a, #22d3ee);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
-        }
-
-        .contact-section {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: white;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .contact-card {
-            background: rgba(34, 211, 238, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(34, 211, 238, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            background: rgba(34, 211, 238, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            opacity: 0.9;
-            color: #22d3ee;
-        }
-
-        .quote-section {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .quote-text {
-            font-size: 1.4rem;
-            font-style: italic;
-            max-width: 900px;
-            margin: 0 auto 30px;
-            opacity: 0.95;
-        }
-
-        .nav-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 0;
-            transition: all 0.3s ease;
-            transform: translateY(-100%);
-            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
-        }
-
-        .nav-bar.visible {
-            transform: translateY(0);
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1e3a8a;
-        }
-
-        .nav-logo img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #1e3a8a;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #22d3ee;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: #1e3a8a;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: flex;
-            }
-            
-            .about-grid,
-            .categories-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        .scroll-indicator::before {
-            content: '↓';
-            font-size: 2rem;
-            color: rgba(34, 211, 238, 0.8);
+        
+        /* Modern countdown */
+        .countdown-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(245, 158, 11, 0.3);
         }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav-bar" id="navbar">
-        <div class="nav-content">
-            <div class="nav-logo">
-               <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<body class="text-slate-700">
 
-                
-                <span>HERO Díj</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about">A díjról</a></li>
-                <li><a href="#categories">Kategóriák</a></li>
-                <li><a href="#timeline">Jelentkezés</a></li>
-                <li><a href="#contact">Kapcsolat</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-              <img src="/hero.png" alt="Hero díj logo" width=35%">
-                <h1 class="hero-title"></h1>
-                <p class="hero-subtitle">HERO Díj - >Helyi érték, Remek Ötlet</p>
-                <p class="hero-description">
-                    A jó ügy nem a minőségből adott engedmény, hanem a minőség a jó ügy legerősebb bizonyítéka. 
-                    Mutasd meg, hogy a „jó üzlet" és a „jót tenni" kéz a kézben jár!
-                </p>
-                <a href="https://docs.google.com/forms/d/1mlIhne8DcHPqI4a-aZOxBlIpB1jG6povej0CSWZIS2o/edit" class="cta-button">Jelentkezem most</a>
-            </div>
-        </div>
-        <div class="scroll-indicator"></div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section-title">Miről szól a HERO Díj?</h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="card-icon">🎯</div>
-                    <h3 class="card-title">Valós hatás</h3>
-                    <p>Mérhető társadalmi vagy környezeti eredményeket díjazzuk, amelyek valóban változást hoznak a közösségekben.</p>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon">⭐</div>
-                    <h3 class="card-title">Kiemelkedő minőség</h3>
-                    <p>Olyat keresünk, amit nem „jófejségből" választanak, hanem azért, mert jobb, mint a többi.</p>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon">🌱</div>
-                    <h3 class="card-title">Fenntarthatóság</h3>
-                    <p>Üzletileg is életképes, átlátható modelleket támogatunk, amelyek hosszú távon is működnek.</p>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon">💡</div>
-                    <h3 class="card-title">Innováció</h3>
-                    <p>Új megoldásokat keresünk régi problémákra, a helyi közösség aktív bevonásával.</p>
+    <header id="home" class="relative min-h-screen hero-bg flex items-center justify-center text-white overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-indigo-900/40 to-purple-900/40"></div>
+        <div class="relative z-10 text-center px-6 py-20 max-w-6xl mx-auto">
+            <div class="mb-8">
+                <div class="flex items-center justify-center gap-8 mb-8">
+                    <img src="hero.png" alt="HERO Díj logó" class="h-24 w-auto filter drop-shadow-xl">
+                   
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="section" id="categories">
-        <div class="container">
-            <h2 class="section-title">Pályázati kategóriák</h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-number">1</div>
-                    <h3>Az év termékgyártó társadalmi vállalkozása</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-number">2</div>
-                    <h3>Az év szolgáltató társadalmi vállalkozása</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-number">3</div>
-                    <h3>Az év kereskedő társadalmi vállalkozása</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-number">4</div>
-                    <h3>Dizájn termék díj</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-number">5</div>
-                    <h3>Legsikeresebb kollaboráció</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-number">6</div>
-                    <h3>Legígéretesebb induló társadalmi vállalkozás</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-number">7</div>
-                    <h3>Kiemelkedő közösségfejlesztő</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-number">8</div>
-                    <h3>Példaértékű támogató projekt</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-number">9</div>
-                    <h3>TAVOSZ hőse</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-number">10</div>
-                    <h3>Közönségdíj</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="section timeline" id="timeline">
-        <div class="container">
-            <h2 class="section-title">Jelentkezési információk</h2>
-            <div class="timeline-content">
-                <div class="deadline-box">
-                    <div class="deadline-date">2025.11.27. 12:00</div>
-                    <p>Jelentkezési határidő</p>
-                    <a href="https://docs.google.com/forms/d/1mlIhne8DcHPqI4a-aZOxBlIpB1jG6povej0CSWZIS2o/edit" class="cta-button" target="_blank" style="margin-top: 20px; display: inline-block;">Jelentkezem most</a>
-                </div>
-                
-                <h3 style="margin-bottom: 30px; font-size: 1.5rem; color: #1e3a8a;">Jelentkezés menete</h3>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h4>Kategória választás</h4>
-                        <p>Látogassa meg a www.herodij.hu oldalt és válassza ki a megfelelő kategóriát</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h4>Online jelentkezés</h4>
-                        <p>A "JELENTKEZEM" gombra kattintva töltse ki az automatikus űrlapot</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h4>Értékelés</h4>
-                        <p>Többlépcsős kiértékelés független bíráló bizottság által</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quote Section -->
-    <section class="section quote-section">
-        <div class="container">
-            <p class="quote-text">
-                "Nem a tökéletességet keressük, hanem a szenvedélyt és a profizmust. Azt a pillanatot, amikor egy jó ügy és egy kiváló termék vagy szolgáltatás elválaszthatatlan egységgé válik."
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
+                TÖBB VAGY MINT EGY VÁLLALKOZÓ. <span class="gradient-text"> </span>
+            </h1>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-amber-300 mb-8 opacity-90">
+                Egy Hős vagy.
+            </h2>
+            <p class="mt-8 max-w-2xl mx-auto text-lg sm:text-xl leading-relaxed text-slate-200 opacity-90">
+                A nevedben benne van a küldetésed: HERO (Helyi Érték, Remek Ötlet).
+                Te vagy az, aki bebizonyítja, hogy a profit és a jó szándék nem ellenségek,
+                hanem a legerősebb szövetségesek.
             </p>
-            <h3 style="font-size: 1.8rem; margin-bottom: 30px;">Mutassátok meg az erőtöket!</h3>
-            <a href="https://docs.google.com/forms/d/1mlIhne8DcHPqI4a-aZOxBlIpB1jG6povej0CSWZIS2o/edit" class="cta-button" target="_blank">Jelentkezzetek most</a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Kapcsolat</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">🏢</div>
-                    <h3>Főszervező</h3>
-                    <p>Társadalmi Vállalkozások Országos Szövetsége (TAVOSZ)</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">👤</div>
-                    <h3>Kapcsolattartó</h3>
-                    <p>Bánhegyiné Tanai Tünde</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h3>E-mail</h3>
-                    <p><a href="mailto:info@tavosz.hu" style="color: #22d3ee;">info@tavosz.hu</a></p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">📱</div>
-                    <h3>Telefon</h3>
-                    <p><a href="tel:06705768705" style="color: #22d3ee;">06 70 576 8705</a></p>
-                </div>
+            
+            <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
+                 
+                <a 
+                   href="https://docs.google.com/forms/d/1mlIhne8DcHPqI4a-aZOxBlIpB1jG6povej0CSWZIS2o/viewform?edit_requested=true"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn-primary text-slate-900 inline-flex items-center gap-3">
+                    <svg 
+                        class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" 
+                            />
+                        
+                    </svg>
+                    Pályázom most
+                    
+                </a>
+                
             </div>
         </div>
-    </section>
+    </header>
 
-    <script>
+    <main>
+        <section id="rolunk" class="py-24 bg-white relative">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                     <img src="Tavosz%20logo.jpg" alt="HERO Díj logó" class="mx-auto mb-10 h-24 w-auto filter drop-shadow-lg"  >
+                     
+            
+            
+                    <h3 class="text-3xl sm:text-4xl font-bold text-slate-800 leading-tight mb-6">
+                        Mirről szól valójában a Hero díj?
+                    </h3>
+                    <div class="w-24 h-1 bg-accent mx-auto mb-8"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <p class="text-lg leading-relaxed text-slate-600">
+                           A HERO Díj létrehozásával mi azokat ünnepeljük, akik olyan fenntartható és ragyogó modelleket építettek amelyek egyszer és mindenkorra megmutatják: az „üzleti siker" és a „társadalmi felelősségvállalás" ugyanannak az éremnek a két oldala.
+                        </p>
+                        <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-8 rounded-2xl border-l-4 border-accent">
+                            <p class="text-xl font-semibold text-slate-800 italic">
+                                "A minőség nem luxus, hanem a társadalmi küldetés leghitelesebb nagykövete."
+                            </p>
+                        </div>
+                        <p class="text-lg leading-relaxed text-slate-600">
+                            Ez a díj nem csupán elismerés – ez egy platform, amely segít építeni a jövő gazdaságát, 
+                            ahol a profit és a társadalmi felelősség egymást erősítik.
+                        </p>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2574&auto=format&fit=crop" 
+                             alt="Csapatmunka" 
+                             class="rounded-3xl shadow-modern w-full h-full object-cover aspect-[4/3]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-3xl"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
+                        Kinek szól a HERO Díj?
+                    </h2>
+                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                        Azoknak a vállalkozóknak, akik nem csak álmodnak a változásról, hanem meg is valósítják azt.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="glass p-8 rounded-3xl text-center shadow-modern hover-lift group">
+                        <div class="flex items-center justify-center h-20 w-20 bg-accent rounded-2xl mx-auto mb-6 shadow-accent group-hover:scale-110 transition-transform duration-300">
+                            <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-4">Valódi hatásod van</h4>
+                        <p class="text-slate-600 leading-relaxed">
+                            Nemcsak beszélsz a változásról, hanem méred is. Kézzelfogható társadalmi vagy környezeti eredményeket mutatsz fel.
+                        </p>
+                    </div>
+                    
+                    <div class="glass p-8 rounded-3xl text-center shadow-modern hover-lift group">
+                        <div class="flex items-center justify-center h-20 w-20 bg-accent rounded-2xl mx-auto mb-6 shadow-accent group-hover:scale-110 transition-transform duration-300">
+                            <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-4">Piaci minőség jellemez</h4>
+                        <p class="text-slate-600 leading-relaxed">
+                            A vevőid nem „jófejségből" választanak, hanem mert a te terméked vagy szolgáltatásod egyszerűen jobb, mint a versenytársaké.
+                        </p>
+                    </div>
+                    
+                    <div class="glass p-8 rounded-3xl text-center shadow-modern hover-lift group">
+                        <div class="flex items-center justify-center h-20 w-20 bg-accent rounded-2xl mx-auto mb-6 shadow-accent group-hover:scale-110 transition-transform duration-300">
+                            <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-4">Fenntartható modellben dolgozol</h4>
+                        <p class="text-slate-600 leading-relaxed">
+                            A vállalkozásod nemcsak ma, de holnap is megáll a lábán. Üzletileg életképes, átlátható és fenntartható.
+                        </p>
+                    </div>
+                    
+                    <div class="glass p-8 rounded-3xl text-center shadow-modern hover-lift group">
+                        <div class="flex items-center justify-center h-20 w-20 bg-accent rounded-2xl mx-auto mb-6 shadow-accent group-hover:scale-110 transition-transform duration-300">
+                            <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-4">Közösségi szupererőd van</h4>
+                        <p class="text-slate-600 leading-relaxed">
+                            Régi problémákra adsz friss, innovatív választ, és közben mozgósítod a helyi közösség erejét.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">10 kategória, végtelen lehetőség</h2>
+                    <p class="text-xl text-slate-600">Találd meg a helyedet a társadalmi vállalkozók között</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl border-l-4 border-accent hover-lift">
+                        <h4 class="font-bold text-lg text-slate-800">Az Év termékgyártó társadalmi vállalkozása </h4>
+                        <p>Olyan társadalmi vállalkozás, amely értéket teremtő termékeivel nemcsak a piacot, hanem a közösség életét is jobbá teszi.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border-l-4 border-accent hover-lift">
+                        <h4 class="font-bold text-lg text-slate-800">Az Év szolgáltató társadalmi vállalkozása</h4>
+                        <p>Az a vállalkozás, amely szolgáltatásaival társadalmi problémákra ad valódi, fenntartható megoldásokat.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-2xl border-l-4 border-accent hover-lift">
+                        <h4 class="font-bold text-lg text-slate-800">Az Év Kereskedő társadalmi vállalkozása</h4>
+                        <p>Az a kereskedelmi szereplő, amely a társadalmi hasznosságot és az üzleti sikert példamutatóan ötvözi.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-2xl border-l-4 border-accent hover-lift">
+                        <h4 class="font-bold text-lg text-slate-800">Dizájn termék díj</h4>
+                        <p>Az a társadalmi vállalkozás, amely innovatív, esztétikus és tudatos dizájnnal emeli termékeit új szintre.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-2xl border-l-4 border-accent hover-lift">
+                        <h4 class="font-bold text-lg text-slate-800">Legsikeresebb kollaboráció</h4>
+                        <p>Olyan együttműködés, amelyben a közös cél, a kreativitás és a társadalmi hatás kéz a kézben jár.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded-2xl border-l-4 border-accent hover-lift">
+                        <h4 class="font-bold text-lg text-slate-800">Legígéretesebb induló társadalmi válalkozás</h4>
+                        <p>Az a frissen indult vállalkozás, amelyben már most ott rejlik a jövő nagy társadalmi hatása.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-2xl border-l-4 border-accent hover-lift">
+                        <h4 class="font-bold text-lg text-slate-800">Kiemelkedő közösségfejlesztő</h4>
+                        <p>Az a vállalkozás, amely aktívan erősíti a helyi közösségeket, és hosszú távon építi a társadalmi összetartozást.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-2xl border-l-4 border-accent hover-lift">
+                        <h4 class="font-bold text-lg text-slate-800">Példaértékű támogató projekt</h4>
+                        <p>Az a befektető, cég vagy támogató kezdeményezés, amely tudással és forrással is hozzájárul a társadalmi vállalkozások sikeréhez.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-slate-50 to-gray-50 p-6 rounded-2xl border-l-4 border-accent hover-lift">
+                        <h4 class="font-bold text-lg text-slate-800">TAVOSZ hőse</h4>
+                        <p>Az a személy, akinek elhivatottsága, kitartása és példamutató munkája nélkül a közösség nem lenne ugyanaz.</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-amber-400 to-orange-500 text-white p-6 rounded-2xl text-center lg:col-span-3 hover-lift">
+                        <h4 class="font-bold text-xl uppercase tracking-wider">Közönségdíj</h4>
+                        <p>A közönség szívéből jövő elismerés annak a társadalmi vállalkozásnak, amely a legtöbb ember szimpátiáját és támogatását elnyerte.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-gradient-to-br from-amber-50 to-orange-50">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-6">
+                            Mit nyújt a HERO Díj?
+                        </h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-modern">
+                                <div class="flex-shrink-0 w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 mb-2">Bizalmi pecsét</h4>
+                                    <p class="text-slate-600">A HERO nem egy porfogó a polcon. Ez egy bizalmi pecsét, ami ajtókat nyit, befektetőket győz meg és vevőket vonz. Országos ismertséget, a szakma csúcsának elismerését és egy olyan kapcsolati hálót adunk a kezedbe, amellyel a növekedésed új sebességre kapcsol.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-modern">
+                                <div class="flex-shrink-0 w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.962c.57-1.023.995-2.148 1.273-3.362a9.04 9.04 0 01-2.454-2.138c-.529-1.043-.836-2.24-1.026-3.522A8.995 8.995 0 002.25 12c0 4.602 3.485 8.443 8.04 8.942 1.478.106 2.973.013 4.418-.283M15.75 9a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 mb-2">10 millió forint értékű média</h4>
+                                    <p class="text-slate-600">A nyertesek 10 millió forint értékű médiamegjelenést kapnak, illetve kapcsolatépítési lehetőséget a legnagyobb hazai vállalatok vezetőivel.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-modern">
+                                <div class="flex-shrink-0 w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a12.06 12.06 0 00-4.5 0m3.75 2.311a12.06 12.06 0 01-4.5 0m5.25-13.841a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 mb-2">TAVOSZ ELIT tagság</h4>
+                                    <p class="text-slate-600">Minden résztvevő 30.000 forint értékű TAVOSZ ELIT tagságot kap egy teljes évre díjmentesen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                     <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2574&auto=format&fit=crop" 
+                             alt="Siker és elismerés" 
+                             class="rounded-3xl shadow-modern w-full h-full object-cover aspect-[4/3]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-amber-900/20 to-transparent rounded-3xl"></div>
+                    </div>
+                </div>
+            </div>
+                    
+                    
+        </section>
+
+        <section id="jelentkezes" class="py-24 bg-primary text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-indigo-900/50 to-purple-900/50"></div>
+            <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                    Készen állsz a változásra?
+                </h2>
+                <p class="text-xl sm:text-2xl font-medium mb-12 text-blue-100">
+                    Csatlakozz a jövő társadalmi vállalkozóihoz
+                </p>
+                
+                <div class="countdown-box p-8 rounded-3xl mb-12 max-w-4xl mx-auto">
+                    <h4 class="text-lg font-bold uppercase tracking-wider text-slate-800 mb-6">
+                        Jelentkezési határidő: 2025. november 17.
+                    </h4>
+                    <div id="countdown" class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+                            <span id="days" class="block text-3xl sm:text-4xl font-black text-amber-500">00</span>
+                            <span class="block text-sm font-semibold text-slate-700 uppercase">Nap</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+                            <span id="hours" class="block text-3xl sm:text-4xl font-black text-amber-500">00</span>
+                            <span class="block text-sm font-semibold text-slate-700 uppercase">Óra</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+                            <span id="minutes" class="block text-3xl sm:text-4xl font-black text-amber-500">00</span>
+                            <span class="block text-sm font-semibold text-slate-700 uppercase">Perc</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+                            <span id="seconds" class="block text-3xl sm:text-4xl font-black text-amber-500">00</span>
+                            <span class="block text-sm font-semibold text-slate-700 uppercase">Másodperc</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="https://docs.google.com/forms/d/1mlIhne8DcHPqI4a-aZOxBlIpB1jG6povej0CSWZIS2o/viewform?edit_requested=true" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="btn-primary text-slate-900 inline-flex items-center gap-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                        Jelentkezem most
+                    </a>
+                   
+                </div>
+                
+                <p class="mt-8 text-blue-200 text-sm italic">
+                    A pályázatokat független szakértőkből álló zsűri értékeli
+                </p>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-slate-800 mb-8">Üzenetünk neked</h2>
+                <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-8 rounded-3xl border-l-4 border-accent">
+                    <blockquote class="text-xl leading-relaxed text-slate-700 space-y-4">
+                        <p>
+                            Nem a tökéletes pályázatot keressük. Azt a <strong> szikrát, szenvedélyt, szakértelmet és profizmust</strong> 
+                            keressük, ami egy jó ügyet piacvezetővé tesz. Azt a pillanatot, amikor egy küldetés és egy kiváló termék elválaszthatatlan egységgé forr össze.
+                        </p>
+                        <p class="text-2xl font-bold text-accent">
+                            Ha ez rólad szól, itt az idő kilépni a fényre.
+                        </p>
+                    </blockquote>
+                </div>
+                <div class="mt-12">
+                    <p class="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">
+                        Mutasd meg, miért te vagy a következő HERO!
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+  
+
+    <footer class="bg-slate-900 text-slate-300 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-700 pb-12 mb-8">
+                <div class="space-y-4">
+                    <img src="Tavosz%20logo.jpg" alt="TAVOSZ Logó" class="h-16 w-auto brightness-2 invert" style="filter: brightness(1);" >
+                    <p class="text-slate-400 leading-relaxed">
+                        A Társadalmi Vállalkozások Országos Szövetsége a magyarországi 
+                        társadalmi vállalkozások érdekképviseleti szerve.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="font-bold text-xl text-amber-400">Kapcsolat</h4>
+                    <div class="space-y-2">
+                                   <p class="flex items-center gap-3">
+    <!-- Email ikon -->
+                            
+                            
+                             <svg class="w-5 h-5 flex-shrink-0 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M3 4h18c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v.83l9 4.5 9-4.5V6H3zm0 2.83V18h18V8.83l-9 4.5-9-4.5z"/>
+    </svg>
+    <a href="mailto:info@tavosz.hu" class="hover:text-white transition">info@tavosz.hu</a>
+</p>
+                        <p class="flex items-center gap-3">
+                            
+                            
+                            
+                            
+    <!-- Telefon ikon -->
+   <svg class="w-5 h-5 flex-shrink-0 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+    </svg>
+    + 36 70 576 8705
+</p>
+       
+                    </div>
+                </div>
+               
+ <div class="space-y-4">
+  <h4 class="font-bold text-xl text-amber-400">Hasznos linkek</h4>
+  <ul class="space-y-2">
+    <li>
+      <a 
+        href="HERO%20Díj%20pályázati%20kiírás.pdf" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="flex items-center gap-2 hover:text-white transition align-middle"
+      >
+        <!-- Notesz ikon -->
+        <svg class="w-5 h-5 text-amber-400 flex-shrink-0 relative top-[1px]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 2H10C8.9 2 8 2.9 8 4v1H6C4.9 5 4 5.9 4 7v13c0 1.1.9 2 2 2h13c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 20V7h2v13H6zm13 0H9V4h10v16zM12 11h5v2h-5v-2zm0 4h5v2h-5v-2z"/>
+        </svg>
+        <span>Pályázati kiírás (PDF)</span>
+      </a>
+    </li>
+    <li>
+      <a 
+        href="https://www.facebook.com/tavoszhu" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="flex items-center gap-2 hover:text-amber-400 transition align-middle"
+      >
+        <!-- Facebook ikon -->
+        <svg class="w-5 h-5 text-amber-400 flex-shrink-0 relative top-[1px]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        <span>Facebook</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+                
+
+
+            <div class="flex flex-col sm:flex-row justify-between items-center text-sm text-slate-500">
+                <p>&copy; 2025 TAVOSZ - HERO Díj. Minden jog fenntartva.</p>
+                
+
+                </div>
+            </div>
+        </div>    
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Countdown timer
+        const countdownElement = document.getElementById('countdown');
+        if (countdownElement) {
+            const countdownDate = new Date("November 17, 2025 23:59:59").getTime();
+
+            const updateCountdown = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(updateCountdown);
+                    countdownElement.innerHTML = "<div class='text-xl font-bold text-red-400'>A jelentkezési határidő lejárt.</div>";
+                }
+            }, 1000);
+        }
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
-
-        // Navbar show/hide
+    </script>
+</body>
+</html>
